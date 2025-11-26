@@ -35,7 +35,7 @@ namespace Autopark_DE.View.Windows
             if (string.IsNullOrEmpty(LoginTb.Text) ||
                 string.IsNullOrEmpty(PasswordPb.Password))
             {
-                MessageBox.Show("Заполните все поля!", "Предупреждение", MessageBoxButton.OK, MessageBoxImage.Warning);
+                MessageBox.Show("Заполните все поля!", "Предупреждение", MessageBoxButton.OK, MessageBoxImage.Exclamation);
             }
             else
             {
@@ -43,45 +43,56 @@ namespace Autopark_DE.View.Windows
 
                 if (App.currentUser != null)
                 {
-                    CaptchaWindow captchaWindow = new CaptchaWindow();
-                    if (captchaWindow.ShowDialog() == true)
+                    if (App.currentUser.IsBlocked == false)
                     {
-                        //Авторизация
-                        if (App.currentUser.RoleId == 1)
+                        CaptchaWindow captchaWindow = new CaptchaWindow();
+                        if (captchaWindow.ShowDialog() == true)
                         {
-                            AdminWindow adminWindow = new AdminWindow();
-                            adminWindow.Show();
+                            //Авторизация
+                            if (App.currentUser.RoleId == 1)
+                            {
+                                AdminWindow adminWindow = new AdminWindow();
+                                adminWindow.Show();
+                            }
+                            else
+                            {
+                                UserWindow userWindow = new UserWindow();
+                                userWindow.Show();
+                            }
+                            Close();
                         }
                         else
                         {
-                            UserWindow userWindow = new UserWindow();
-                            userWindow.Show();
+                            // Подсчет кол-ва неудачных попыток капчи
                         }
-                        Close();
                     }
                     else
                     {
-                        //Блокировка
-                        string login = App.context.Пользователь.FirstOrDefault(s => s.Login == LoginTb.Text).Login;
+                        MessageBox.Show("Учктная запись заблокирована!", "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
+                    }
+                }
+                else
+                {
+                    //Блокировка
+                    string login = App.context.Пользователь.FirstOrDefault(s => s.Login == LoginTb.Text).Login;
 
-                        if (string.IsNullOrEmpty(login))
+                    if (string.IsNullOrEmpty(login))
+                    {
+                        MessageBox.Show($"Введен неверный логин или пароль.", "Предупреждение", MessageBoxButton.OK, MessageBoxImage.Warning);
+                    }
+                    else
+                    {
+                        //Подсчет кол-ва неудачных попыток
+                        failedEntryCount++;
+                        MessageBox.Show($"Введен неверный пароль. Осталось попыток:{3 - failedEntryCount} из 3", "Предупреждение", MessageBoxButton.OK, MessageBoxImage.Warning);
+
+                        if (failedEntryCount == 3)
                         {
-
-                        }
-                        else
-                        {
-                            //Подсчет кол-ва неудачных попыток
-                            failedEntryCount++;
-                            MessageBox.Show($"Введен неверный пароль. Осталось попыток:{failedEntryCount} из 3", "Предупреждение", MessageBoxButton.OK, MessageBoxImage.Warning);
-
-                            if (failedEntryCount == 3)
-                            {
-                                MessageBox.Show("Пльзователь заблокирован!", "Информация", MessageBoxButton.OK, MessageBoxImage.Information);
-                                failedEntryCount = 0;
-                                Пользователь userToBlock = App.context.Пользователь.FirstOrDefault(s => s.Login == LoginTb.Text);
-                                userToBlock.IsBlocked = true;
-                                App.context.SaveChanges();
-                            }
+                            MessageBox.Show("Пльзователь заблокирован!", "Информация", MessageBoxButton.OK, MessageBoxImage.Information);
+                            failedEntryCount = 0;
+                            Пользователь userToBlock = App.context.Пользователь.FirstOrDefault(s => s.Login == LoginTb.Text);
+                            userToBlock.IsBlocked = true;
+                            App.context.SaveChanges();
                         }
                     }
                 }
