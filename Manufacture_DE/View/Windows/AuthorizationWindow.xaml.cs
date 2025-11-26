@@ -1,4 +1,5 @@
 ﻿using Manufacture_DE;
+using Manufacture_DE.Model;
 using Manufacture_DE.View.Windows;
 using System;
 using System.Collections.Generic;
@@ -21,6 +22,7 @@ namespace Autopark_DE.View.Windows
     /// </summary>
     public partial class AuthorizationWindow : Window
     {
+        int failedEntryCount = 0;
 
         int inputCount = 0;
         public AuthorizationWindow()
@@ -41,8 +43,8 @@ namespace Autopark_DE.View.Windows
 
                 if (App.currentUser != null)
                 {
-                   CaptchaWindow captchaWindow = new CaptchaWindow();
-                    if(captchaWindow.ShowDialog()== true)
+                    CaptchaWindow captchaWindow = new CaptchaWindow();
+                    if (captchaWindow.ShowDialog() == true)
                     {
                         //Авторизация
                         if (App.currentUser.RoleId == 1)
@@ -56,11 +58,31 @@ namespace Autopark_DE.View.Windows
                             userWindow.Show();
                         }
                         Close();
-
                     }
                     else
                     {
                         //Блокировка
+                        string login = App.context.Пользователь.FirstOrDefault(s => s.Login == LoginTb.Text).Login;
+
+                        if (string.IsNullOrEmpty(login))
+                        {
+
+                        }
+                        else
+                        {
+                            //Подсчет кол-ва неудачных попыток
+                            failedEntryCount++;
+                            MessageBox.Show($"Введен неверный пароль. Осталось попыток:{failedEntryCount} из 3", "Предупреждение", MessageBoxButton.OK, MessageBoxImage.Warning);
+
+                            if (failedEntryCount == 3)
+                            {
+                                MessageBox.Show("Пльзователь заблокирован!", "Информация", MessageBoxButton.OK, MessageBoxImage.Information);
+                                failedEntryCount = 0;
+                                Пользователь userToBlock = App.context.Пользователь.FirstOrDefault(s => s.Login == LoginTb.Text);
+                                userToBlock.IsBlocked = true;
+                                App.context.SaveChanges();
+                            }
+                        }
                     }
                 }
             }
