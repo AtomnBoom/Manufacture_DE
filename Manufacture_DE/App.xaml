@@ -1,0 +1,42 @@
+﻿<Application x:Class="Manufacture_DE.App"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:local="clr-namespace:Manufacture_DE"
+             StartupUri="\View\Windows\AuthorizationWindow.xaml">
+    <Application.Resources>
+        <Style TargetType="TextBlock">
+            <Setter Property="FontSize" Value="20" />
+            <Setter Property="FontFamily" Value="Arial" />
+            <Setter Property="VerticalAlignment" Value="Center" />
+        </Style>
+        <Style TargetType="TextBox">
+            <Setter Property="FontSize" Value="20" />
+            <Setter Property="FontFamily" Value="Arial" />
+            <Setter Property="VerticalAlignment" Value="Center" />
+            <Setter Property="Padding" Value="5 0" />
+        </Style>
+        <Style TargetType="PasswordBox">
+            <Setter Property="FontSize" Value="20" />
+            <Setter Property="FontFamily" Value="Arial" />
+            <Setter Property="VerticalAlignment" Value="Center" />
+            <Setter Property="Padding" Value="5 0" />
+        </Style>
+        <Style TargetType="ComboBox">
+            <Setter Property="FontSize" Value="20" />
+            <Setter Property="FontFamily" Value="Arial" />
+            <Setter Property="VerticalAlignment" Value="Center" />
+            <Setter Property="Padding" Value="5 0" />
+        </Style>
+        <Style TargetType="DatePicker">
+            <Setter Property="FontSize" Value="20" />
+            <Setter Property="FontFamily" Value="Arial" />
+            <Setter Property="VerticalAlignment" Value="Center" />
+            <Setter Property="Padding" Value="5 0" />
+        </Style>
+        <Style TargetType="Button">
+            <Setter Property="FontSize" Value="20" />
+            <Setter Property="FontFamily" Value="Arial" />
+            <Setter Property="Padding" Value="5 0" />
+        </Style>
+    </Application.Resources>
+</Application>
