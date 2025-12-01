@@ -5,8 +5,94 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Manufacture_DE.View.Windows"
         mc:Ignorable="d"
-        Title="AdminWindow" Height="450" Width="800">
-    <Grid>
-        
+        Title="Окно администратора" Height="720" Width="1280" WindowStartupLocation="CenterScreen">
+    <Grid Margin="20">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="60" />
+            <RowDefinition Height="10" />
+            <RowDefinition Height="1*" />
+        </Grid.RowDefinitions>
+
+        <Button Name="AddUserBtn" Content="Добавить пользователя" HorizontalAlignment="Left" Click="AddUserBtn_Click" />
+
+        <Grid Grid.Row="2">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="1*" />
+                <ColumnDefinition Width="10" />
+                <ColumnDefinition Width="450" />
+            </Grid.ColumnDefinitions>
+
+            <ListView Name="UsersLv" SelectionChanged="UsersLv_SelectionChanged">
+                <ListView.View>
+                    <GridView>
+                        <GridViewColumn Header="ФИО" DisplayMemberBinding="{Binding Name}" />
+                        <GridViewColumn Header="Телефон" DisplayMemberBinding="{Binding Phone}" />
+                        <GridViewColumn Header="ИНН" DisplayMemberBinding="{Binding INN}" />
+                    </GridView>
+                </ListView.View>
+            </ListView>
+
+            <ScrollViewer Grid.Column="2" HorizontalScrollBarVisibility="Disabled">
+                <Grid Name="UserDetails">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="auto" />
+                        <ColumnDefinition Width="10" />
+                        <ColumnDefinition Width="300" />
+                    </Grid.ColumnDefinitions>
+
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="50" />
+                        <RowDefinition Height="5" />
+                        <RowDefinition Height="50" />
+                        <RowDefinition Height="5" />
+                        <RowDefinition Height="50" />
+                        <RowDefinition Height="5" />
+                        <RowDefinition Height="50" />
+                        <RowDefinition Height="5" />
+                        <RowDefinition Height="50" />
+                        <RowDefinition Height="5" />
+                        <RowDefinition Height="50" />
+                        <RowDefinition Height="5" />
+                        <RowDefinition Height="50" />
+                        <RowDefinition Height="5" />
+                        <RowDefinition Height="50" />
+                        <RowDefinition Height="5" />
+                        <RowDefinition Height="50" />
+                        <RowDefinition Height="5" />
+                        <RowDefinition Height="50" />
+                        <RowDefinition Height="5" />
+                        <RowDefinition Height="50" />
+                    </Grid.RowDefinitions>
+
+                    <TextBlock Text="Полное имя:" />
+                    <TextBox Grid.Column="2" Text="{Binding Name}"/>
+                    
+                    <TextBlock Grid.Row="2" Text="ИНН:" />
+                    <TextBox Grid.Row="2" Grid.Column="2" Text="{Binding INN}"/>
+                    
+                    <TextBlock Grid.Row="4" Text="АДресс:" />
+                    <TextBox Grid.Row="4" Grid.Column="2" Text="{Binding Addres}"/>
+                    
+                    <TextBlock Grid.Row="6" Text="Телефон:" />
+                    <TextBox Grid.Row="6" Grid.Column="2" Text="{Binding Phone}"/>
+
+                    <CheckBox Name="IsSalesmanCb" Grid.Row="8" Grid.Column="2" Content="Является продавцом"/>
+                    <CheckBox Name="IsBuyerCb" Grid.Row="10" Grid.Column="2" Content="Является покупателем"/>
+
+                    <TextBlock Grid.Row="12" Text="Логин:" />
+                    <TextBox Grid.Row="12" Grid.Column="2" Text="{Binding Login}"/>
+
+                    <TextBlock Grid.Row="14" Text="Пароль:" />
+                    <TextBox Grid.Row="14" Grid.Column="2" Text="{Binding Password}"/>
+                    
+                    <CheckBox Name="IsBlockedCb" Grid.Row="16" Grid.Column="2" Content="Заблокирован"/>
+
+                    <TextBlock Grid.Row="18" Text="Роль:" />
+                    <ComboBox Grid.Row="18" Grid.Column="2" SelectedValuePath="Id" DisplayMemberPath="Name"/>
+
+                    <Button Name="SaveChangesBtn" Grid.Row="20" Grid.Column="2" Content="Сохранить изменения" Click="SaveChangesBtn_Click" />
+                </Grid>
+            </ScrollViewer>
+        </Grid>
     </Grid>
 </Window>

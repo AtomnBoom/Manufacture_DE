@@ -23,5 +23,20 @@ namespace Manufacture_DE.View.Windows
         {
             InitializeComponent();
         }
+
+        private void AddUserBtn_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void UsersLv_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+
+        }
+
+        private void SaveChangesBtn_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }
