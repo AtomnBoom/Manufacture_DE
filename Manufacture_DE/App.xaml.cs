@@ -14,7 +14,7 @@ namespace Manufacture_DE
     /// </summary>
     public partial class App : Application
     {
-        public static Пользователь currentUser { get; set; }
-        public static user15Entities context = new user15Entities();
+        public static SystemUser currentUser { get; set; }
+        public static ManufacturerDbEntities context = new ManufacturerDbEntities();
     }
 }

@@ -39,7 +39,7 @@ namespace Autopark_DE.View.Windows
             }
             else
             {
-                App.currentUser = App.context.Пользователь.FirstOrDefault(u => u.Login == LoginTb.Text && u.Password == PasswordPb.Password);
+                App.currentUser = App.context.SystemUser.FirstOrDefault(u => u.Login == LoginTb.Text && u.Password == PasswordPb.Password);
 
                 if (App.currentUser != null)
                 {
@@ -64,6 +64,17 @@ namespace Autopark_DE.View.Windows
                         else
                         {
                             // Подсчет кол-ва неудачных попыток капчи
+                            failedEntryCount++;
+                            MessageBox.Show($"Капча не пройдена. Осталось попыток:{3 - failedEntryCount} из 3", "Предупреждение", MessageBoxButton.OK, MessageBoxImage.Warning);
+
+                            if (failedEntryCount == 3)
+                            {
+                                MessageBox.Show("Пльзователь заблокирован!", "Информация", MessageBoxButton.OK, MessageBoxImage.Information);
+                                failedEntryCount = 0;
+                                SystemUser userToBlock = App.context.SystemUser.FirstOrDefault(s => s.Login == LoginTb.Text);
+                                userToBlock.IsBlocked = true;
+                                App.context.SaveChanges();
+                            }
                         }
                     }
                     else
@@ -74,7 +85,7 @@ namespace Autopark_DE.View.Windows
                 else
                 {
                     //Блокировка
-                    string login = App.context.Пользователь.FirstOrDefault(s => s.Login == LoginTb.Text).Login;
+                    string login = App.context.SystemUser.FirstOrDefault(s => s.Login == LoginTb.Text).Login;
 
                     if (string.IsNullOrEmpty(login))
                     {
@@ -90,7 +101,7 @@ namespace Autopark_DE.View.Windows
                         {
                             MessageBox.Show("Пльзователь заблокирован!", "Информация", MessageBoxButton.OK, MessageBoxImage.Information);
                             failedEntryCount = 0;
-                            Пользователь userToBlock = App.context.Пользователь.FirstOrDefault(s => s.Login == LoginTb.Text);
+                            SystemUser userToBlock = App.context.SystemUser.FirstOrDefault(s => s.Login == LoginTb.Text);
                             userToBlock.IsBlocked = true;
                             App.context.SaveChanges();
                         }

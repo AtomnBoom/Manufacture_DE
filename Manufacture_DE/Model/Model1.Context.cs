@@ -13,10 +13,10 @@ namespace Manufacture_DE.Model
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
     
-    public partial class user15Entities : DbContext
+    public partial class ManufacturerDbEntities : DbContext
     {
-        public user15Entities()
-            : base("name=user15Entities")
+        public ManufacturerDbEntities()
+            : base("name=ManufacturerDbEntities")
         {
         }
     
@@ -25,8 +25,17 @@ namespace Manufacture_DE.Model
             throw new UnintentionalCodeFirstException();
         }
     
-        public DbSet<Клиент> Клиент { get; set; }
-        public DbSet<Пользователь> Пользователь { get; set; }
-        public DbSet<РольПользователя> РольПользователя { get; set; }
+        public DbSet<Company> Company { get; set; }
+        public DbSet<Customer> Customer { get; set; }
+        public DbSet<Manufacture> Manufacture { get; set; }
+        public DbSet<Material> Material { get; set; }
+        public DbSet<Order> Order { get; set; }
+        public DbSet<OrderProduct> OrderProduct { get; set; }
+        public DbSet<Product> Product { get; set; }
+        public DbSet<Specification> Specification { get; set; }
+        public DbSet<SpecificationMaterial> SpecificationMaterial { get; set; }
+        public DbSet<SystemUser> SystemUser { get; set; }
+        public DbSet<Unit> Unit { get; set; }
+        public DbSet<UserRole> UserRole { get; set; }
     }
 }

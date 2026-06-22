@@ -12,16 +12,21 @@ namespace Manufacture_DE.Model
     using System;
     using System.Collections.Generic;
     
-    public partial class Пользователь
+    public partial class Company
     {
-        public int Id { get; set; }
-        public string Login { get; set; }
-        public string Password { get; set; }
-        public bool IsBlocked { get; set; }
-        public int CustomerId { get; set; }
-        public int RoleId { get; set; }
+        public Company()
+        {
+            this.Specification = new HashSet<Specification>();
+        }
     
-        public virtual Клиент Клиент { get; set; }
-        public virtual РольПользователя РольПользователя { get; set; }
+        public int Id { get; set; }
+        public string Name { get; set; }
+        public string Insurance { get; set; }
+        public string Phone { get; set; }
+        public string Address { get; set; }
+        public bool IsCustomer { get; set; }
+        public bool IsManufacturer { get; set; }
+    
+        public virtual ICollection<Specification> Specification { get; set; }
     }
 }

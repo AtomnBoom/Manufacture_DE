@@ -4,12 +4,31 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="2947b8cfdfd947118a678bb882a8cd2c" Name="Diagram1" ZoomLevel="198">
-        <EntityTypeShape EntityType="user15Model.Клиент" Width="1.5" PointX="0.75" PointY="1" IsExpanded="true" />
-        <EntityTypeShape EntityType="user15Model.Пользователь" Width="1.5" PointX="3" PointY="1" IsExpanded="true" />
-        <EntityTypeShape EntityType="user15Model.РольПользователя" Width="1.5" PointX="5.375" PointY="1.375" IsExpanded="true" />
-        <AssociationConnector Association="user15Model.FK_Пользователь_Клиент1" ManuallyRouted="false" />
-        <AssociationConnector Association="user15Model.FK_Пользователь_РольПользователя1" ManuallyRouted="false" />
+      <Diagram DiagramId="d70290d923114d7484ee7c558162b68f" Name="Diagram1">
+        <EntityTypeShape EntityType="ManufacturerDbModel.Company" Width="1.5" PointX="6" PointY="13.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="ManufacturerDbModel.Customer" Width="1.5" PointX="7.75" PointY="1" IsExpanded="true" />
+        <EntityTypeShape EntityType="ManufacturerDbModel.Manufacture" Width="1.5" PointX="5.25" PointY="5.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="ManufacturerDbModel.Material" Width="1.5" PointX="3" PointY="4.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="ManufacturerDbModel.Order" Width="1.5" PointX="3" PointY="11.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="ManufacturerDbModel.OrderProduct" Width="1.5" PointX="5.25" PointY="9.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="ManufacturerDbModel.Product" Width="1.5" PointX="3" PointY="7.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="ManufacturerDbModel.Specification" Width="1.5" PointX="8.25" PointY="7.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="ManufacturerDbModel.SpecificationMaterial" Width="1.5" PointX="5.25" PointY="2.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="ManufacturerDbModel.SystemUser" Width="1.5" PointX="10" PointY="1" IsExpanded="true" />
+        <EntityTypeShape EntityType="ManufacturerDbModel.Unit" Width="1.5" PointX="0.75" PointY="6" IsExpanded="true" />
+        <EntityTypeShape EntityType="ManufacturerDbModel.UserRole" Width="1.5" PointX="7.75" PointY="4.375" IsExpanded="true" />
+        <AssociationConnector Association="ManufacturerDbModel.FK_Specification_Company" ManuallyRouted="false" />
+        <AssociationConnector Association="ManufacturerDbModel.FK_SystemUser_Customer" ManuallyRouted="false" />
+        <AssociationConnector Association="ManufacturerDbModel.FK_Manufacture_Material" ManuallyRouted="false" />
+        <AssociationConnector Association="ManufacturerDbModel.FK_Manufacture_Product" ManuallyRouted="false" />
+        <AssociationConnector Association="ManufacturerDbModel.FK_Material_Unit" ManuallyRouted="false" />
+        <AssociationConnector Association="ManufacturerDbModel.FK_SpecificationMaterial_Material" ManuallyRouted="false" />
+        <AssociationConnector Association="ManufacturerDbModel.FK_OrderProduct_Order" ManuallyRouted="false" />
+        <AssociationConnector Association="ManufacturerDbModel.FK_OrderProduct_Product" ManuallyRouted="false" />
+        <AssociationConnector Association="ManufacturerDbModel.FK_Product_Unit" ManuallyRouted="false" />
+        <AssociationConnector Association="ManufacturerDbModel.FK_Specification_Product" ManuallyRouted="false" />
+        <AssociationConnector Association="ManufacturerDbModel.FK_SpecificationMaterial_Specification" ManuallyRouted="false" />
+        <AssociationConnector Association="ManufacturerDbModel.FK_SystemUser_UserRole" ManuallyRouted="false" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

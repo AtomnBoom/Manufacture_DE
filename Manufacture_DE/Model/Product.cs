@@ -12,21 +12,23 @@ namespace Manufacture_DE.Model
     using System;
     using System.Collections.Generic;
     
-    public partial class Клиент
+    public partial class Product
     {
-        public Клиент()
+        public Product()
         {
-            this.Пользователь = new HashSet<Пользователь>();
+            this.Manufacture = new HashSet<Manufacture>();
+            this.OrderProduct = new HashSet<OrderProduct>();
+            this.Specification = new HashSet<Specification>();
         }
     
         public int Id { get; set; }
         public string Name { get; set; }
-        public string INN { get; set; }
-        public string Addres { get; set; }
-        public string Phone { get; set; }
-        public bool IsSalesman { get; set; }
-        public bool IsBuyer { get; set; }
+        public decimal Price { get; set; }
+        public int UnitId { get; set; }
     
-        public virtual ICollection<Пользователь> Пользователь { get; set; }
+        public virtual ICollection<Manufacture> Manufacture { get; set; }
+        public virtual ICollection<OrderProduct> OrderProduct { get; set; }
+        public virtual Unit Unit { get; set; }
+        public virtual ICollection<Specification> Specification { get; set; }
     }
 }

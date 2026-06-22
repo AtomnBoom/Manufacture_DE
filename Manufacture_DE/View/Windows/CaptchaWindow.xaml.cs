@@ -30,10 +30,10 @@ namespace Autopark_DE.View.Windows
 
             imagesPath = new string[]
             {
-                @"C:\Users\user15\source\repos\Manufacture_DE\Manufacture_DE\Resources\Images\Captcha\1.png",
-                @"C:\Users\user15\source\repos\Manufacture_DE\Manufacture_DE\Resources\Images\Captcha\2.png",
-                @"C:\Users\user15\source\repos\Manufacture_DE\Manufacture_DE\Resources\Images\Captcha\3.png",
-                @"C:\Users\user15\source\repos\Manufacture_DE\Manufacture_DE\Resources\Images\Captcha\4.png",
+                @"C:\Users\addt6\Source\Repos\Manufacture_DE\Manufacture_DE\Resources\Images\Captcha\1.png",
+                @"C:\Users\addt6\Source\Repos\Manufacture_DE\Manufacture_DE\Resources\Images\Captcha\2.png",
+                @"C:\Users\addt6\Source\Repos\Manufacture_DE\Manufacture_DE\Resources\Images\Captcha\3.png",
+                @"C:\Users\addt6\Source\Repos\Manufacture_DE\Manufacture_DE\Resources\Images\Captcha\4.png",
             };
 
 
@@ -55,7 +55,7 @@ namespace Autopark_DE.View.Windows
                 else
                 {
                     MessageBox.Show("Вы робот!");
-                    DialogResult = true;
+                    DialogResult = false;
                 }
             }
         }

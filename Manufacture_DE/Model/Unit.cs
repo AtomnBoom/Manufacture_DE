@@ -12,16 +12,18 @@ namespace Manufacture_DE.Model
     using System;
     using System.Collections.Generic;
     
-    public partial class РольПользователя
+    public partial class Unit
     {
-        public РольПользователя()
+        public Unit()
         {
-            this.Пользователь = new HashSet<Пользователь>();
+            this.Material = new HashSet<Material>();
+            this.Product = new HashSet<Product>();
         }
     
         public int Id { get; set; }
         public string Name { get; set; }
     
-        public virtual ICollection<Пользователь> Пользователь { get; set; }
+        public virtual ICollection<Material> Material { get; set; }
+        public virtual ICollection<Product> Product { get; set; }
     }
 }
