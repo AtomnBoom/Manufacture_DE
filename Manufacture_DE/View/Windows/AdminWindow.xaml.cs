@@ -96,7 +96,7 @@ namespace Manufacture_DE.View.Windows
                 Name = NameTb.Text,
                 INN = InnTb.Text.Trim(),
                 Addres = AdressTb.Text,
-                Phone = PhoneTb.Text.Trim(),
+                Phone = PhoneTb.Text,
                 IsSalesman = (bool)IsSalesmanCb.IsChecked,
                 IsBuyer = (bool)IsBuyerCb.IsChecked,
             };
