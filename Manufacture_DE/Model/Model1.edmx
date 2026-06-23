@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="Хранилище ManufacturerDbModel" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="Хранилище ManufacturerDbModel" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="Company">
           <Key>
             <PropertyRef Name="Id" />
@@ -25,7 +25,7 @@
           <Property Name="Name" Type="nvarchar" MaxLength="100" Nullable="false" />
           <Property Name="INN" Type="nchar" MaxLength="12" Nullable="false" />
           <Property Name="Addres" Type="nvarchar" MaxLength="100" Nullable="false" />
-          <Property Name="Phone" Type="nvarchar" MaxLength="11" Nullable="false" />
+          <Property Name="Phone" Type="nvarchar" MaxLength="12" Nullable="false" />
           <Property Name="IsSalesman" Type="bit" Nullable="false" />
           <Property Name="IsBuyer" Type="bit" Nullable="false" />
         </EntityType>
@@ -323,8 +323,7 @@
             <End Role="SystemUser" EntitySet="SystemUser" />
           </AssociationSet>
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="ManufacturerDbModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -349,7 +348,7 @@
           <Property Name="Name" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="INN" Type="String" MaxLength="12" FixedLength="true" Unicode="true" Nullable="false" />
           <Property Name="Addres" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="Phone" Type="String" MaxLength="11" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Phone" Type="String" MaxLength="12" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="IsSalesman" Type="Boolean" Nullable="false" />
           <Property Name="IsBuyer" Type="Boolean" Nullable="false" />
           <NavigationProperty Name="SystemUser" Relationship="Self.FK_SystemUser_Customer" FromRole="Customer" ToRole="SystemUser" />

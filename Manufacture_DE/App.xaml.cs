@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Configuration;
 using System.Data;
 using System.Linq;
+using System.Security.Policy;
 using System.Threading.Tasks;
 using System.Windows;
 
@@ -16,5 +17,6 @@ namespace Manufacture_DE
     {
         public static SystemUser currentUser { get; set; }
         public static ManufacturerDbEntities context = new ManufacturerDbEntities();
+        public static Customer currentCus {  get; set; }
     }
 }

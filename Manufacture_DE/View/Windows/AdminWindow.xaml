@@ -65,32 +65,33 @@
                     </Grid.RowDefinitions>
 
                     <TextBlock Text="Полное имя:" />
-                    <TextBox Grid.Column="2" Text="{Binding Name}"/>
+                    <TextBox Name="NameTb" Grid.Column="2" Text="{Binding Name}"/>
                     
                     <TextBlock Grid.Row="2" Text="ИНН:" />
-                    <TextBox Grid.Row="2" Grid.Column="2" Text="{Binding INN}"/>
+                    <TextBox Name="InnTb" Grid.Row="2" Grid.Column="2" Text="{Binding INN}"/>
                     
-                    <TextBlock Grid.Row="4" Text="АДресс:" />
-                    <TextBox Grid.Row="4" Grid.Column="2" Text="{Binding Addres}"/>
+                    <TextBlock Grid.Row="4" Text="Адресс:" />
+                    <TextBox Name="AdressTb" Grid.Row="4" Grid.Column="2" Text="{Binding Addres}"/>
                     
                     <TextBlock Grid.Row="6" Text="Телефон:" />
-                    <TextBox Grid.Row="6" Grid.Column="2" Text="{Binding Phone}"/>
+                    <TextBox Name="PhoneTb" Grid.Row="6" Grid.Column="2" Text="{Binding Phone}"/>
 
                     <CheckBox Name="IsSalesmanCb" Grid.Row="8" Grid.Column="2" Content="Является продавцом"/>
                     <CheckBox Name="IsBuyerCb" Grid.Row="10" Grid.Column="2" Content="Является покупателем"/>
 
                     <TextBlock Grid.Row="12" Text="Логин:" />
-                    <TextBox Grid.Row="12" Grid.Column="2" Text="{Binding Login}"/>
+                    <TextBox Name="LoginTb" Grid.Row="12" Grid.Column="2" Text="{Binding Login}"/>
 
                     <TextBlock Grid.Row="14" Text="Пароль:" />
-                    <TextBox Grid.Row="14" Grid.Column="2" Text="{Binding Password}"/>
+                    <TextBox Name="PassTb" Grid.Row="14" Grid.Column="2" Text="{Binding Password}"/>
                     
                     <CheckBox Name="IsBlockedCb" Grid.Row="16" Grid.Column="2" Content="Заблокирован"/>
 
                     <TextBlock Grid.Row="18" Text="Роль:" />
-                    <ComboBox Grid.Row="18" Grid.Column="2" SelectedValuePath="Id" DisplayMemberPath="Name"/>
+                    <ComboBox Name="RoleCmb" Grid.Row="18" Grid.Column="2" SelectedValuePath="Id" DisplayMemberPath="Name"/>
 
                     <Button Name="SaveChangesBtn" Grid.Row="20" Grid.Column="2" Content="Сохранить изменения" Click="SaveChangesBtn_Click" />
+                    <Button Name="NewBtn" Grid.Row="20" Grid.Column="2" Content="Добавить пользователя" Visibility="Collapsed" Click="NewBtn_Click" />
                 </Grid>
             </ScrollViewer>
         </Grid>
