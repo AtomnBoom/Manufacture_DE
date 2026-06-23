@@ -50,10 +50,13 @@ namespace Manufacture_DE.View.Windows
                 IsSalesmanCb.IsChecked = App.currentCus.IsSalesman;
                 IsBuyerCb.IsChecked = App.currentCus.IsBuyer;
 
-                LoginTb.Text = sysus.Login;
-                PassTb.Text = sysus.Password;
-                IsBlockedCb.IsChecked = sysus.IsBlocked;
-                RoleCmb.SelectedItem = sysus.UserRole;
+                if (sysus != null)
+                {
+                    LoginTb.Text = sysus.Login;
+                    PassTb.Text = sysus.Password;
+                    IsBlockedCb.IsChecked = sysus.IsBlocked;
+                    RoleCmb.SelectedItem = sysus.UserRole;
+                }
             }
             else
             {
