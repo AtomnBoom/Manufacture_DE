@@ -101,16 +101,7 @@ namespace Manufacture_DE.View.Windows
                 IsBuyer = (bool)IsBuyerCb.IsChecked,
             };
             App.context.Customer.Add(newCustomer);
-            try
-            {
-                App.context.SaveChanges();
-            }
-            catch (DbEntityValidationException ex)
-            {
-                string errorMessages = string.Join("\n",ex.EntityValidationErrors.SelectMany(x => x.ValidationErrors).Select(x => $"{x.PropertyName}: {x.ErrorMessage}"));
-                MessageBox.Show($"Ошибка валидации:\n{errorMessages}");
-                return;
-            }
+            App.context.SaveChanges();
 
             SystemUser newUser = new SystemUser()
             {
