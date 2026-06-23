@@ -85,11 +85,10 @@ namespace Autopark_DE.View.Windows
                 else
                 {
                     //Блокировка
-                    string login = App.context.SystemUser.FirstOrDefault(s => s.Login == LoginTb.Text).Login;
-
-                    if (string.IsNullOrEmpty(login))
+                    
+                    if (App.currentUser == null)
                     {
-                        MessageBox.Show($"Введен неверный логин или пароль.", "Предупреждение", MessageBoxButton.OK, MessageBoxImage.Warning);
+                        MessageBox.Show($"Вы ввели неверный логин или пароль. Пожалуйста проверьте ещё раз введенные данные", "Предупреждение", MessageBoxButton.OK, MessageBoxImage.Warning);
                     }
                     else
                     {
