@@ -84,13 +84,10 @@ namespace Autopark_DE.View.Windows
                 }
                 else
                 {
-                    //Блокировка
-                    
-                    if (App.currentUser == null)
-                    {
-                        MessageBox.Show($"Вы ввели неверный логин или пароль. Пожалуйста проверьте ещё раз введенные данные", "Предупреждение", MessageBoxButton.OK, MessageBoxImage.Warning);
-                    }
-                    else
+                    // Блокировка
+                    App.currentUser = App.context.SystemUser.FirstOrDefault(u => u.Login == LoginTb.Text);
+
+                    if (App.currentUser != null)
                     {
                         //Подсчет кол-ва неудачных попыток
                         failedEntryCount++;
@@ -104,6 +101,10 @@ namespace Autopark_DE.View.Windows
                             userToBlock.IsBlocked = true;
                             App.context.SaveChanges();
                         }
+                    }
+                    else
+                    {
+                        MessageBox.Show($"Вы ввели неверный логин или пароль. Пожалуйста проверьте ещё раз введенные данные", "Предупреждение", MessageBoxButton.OK, MessageBoxImage.Warning);
                     }
                 }
             }
